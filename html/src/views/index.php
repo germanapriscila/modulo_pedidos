@@ -4,10 +4,10 @@
 
 <div class="container">
     <div id="message-box"></div>
-    <h3>Pedidos</h3>
+    <h3 class="brown-text text-darken-1">Pedidos</h3>
     <table class="highlight">
         <thead>
-            <tr>
+            <tr class="brown-text text-darken-1">
                 <th>Código</th>
                 <th>Descrição</th>
                 <th>Quantidade</th>
@@ -27,13 +27,13 @@
                     <td><?php echo date("d/m/Y H:m:s", strtotime($pedido['data'])); ?></td>
                     <td>
                         <a href="index.php?editar=<?php echo $pedido['id']; ?>" 
-                           class="btn tooltipped btn-floating btn-medium waves-effect waves-light purple accent-1" 
+                           class="btn tooltipped btn-floating btn-medium waves-effect waves-light brown lighten-1" 
                            data-position="top" 
                            data-tooltip="Editar pedido">
                             <i class="material-icons">edit</i>
                         </a>    
                         <a href="index.php?deletar=<?php echo $pedido['id']; ?>" 
-                           class="btn tooltipped btn-floating btn-medium waves-effect waves-light purple accent-1" 
+                           class="btn tooltipped btn-floating btn-medium waves-effect waves-light brown lighten-1" 
                            data-position="top" 
                            data-tooltip="Excluir pedido"
                            onclick="return confirm('Você tem certeza que deseja excluir este pedido?');">
@@ -45,8 +45,12 @@
         </tbody>        
     </table>
     <div class="section" id="section">
-        <a href="views/create.php" class="waves-effect waves-light btn-large red lighten-2">
-            <i class="material-icons right">add</i>Criar novo pedido
+        <a href="src/views/create.php" class="waves-effect waves-light btn-large red lighten-4 brown-text text-darken-3">
+            <i class="material-icons right brown-text text-darken-3">add</i>Criar novo pedido
         </a> 
     </div>      
 </div>
+
+<?php
+    include "template/footer.php";
+?>

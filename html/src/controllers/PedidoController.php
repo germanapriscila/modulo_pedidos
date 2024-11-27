@@ -1,6 +1,6 @@
 <?php
-include_once 'models/Pedido.php';
-include_once 'models/PedidoDAO.php';
+include_once 'src/models/Pedido.php';
+include_once 'src/models/PedidoDAO.php';
 
 class PedidoController {
     private $pedidoDAO;
@@ -12,34 +12,20 @@ class PedidoController {
     // Listar pedidos
     public function listarPedidos() {
         $pedidos = $this->pedidoDAO->listar();
-        include 'views/index.php';
+        include 'src/views/index.php';
     }
 
     // Criar pedido
     public function criarPedido($descricao, $quantidade, $preco, $vendedor) {
         $pedido = new Pedido($descricao, $quantidade, $preco, $vendedor);
-        try {
-            $resultado = $this->pedidoDAO->criar($pedido); // Verifique se o método retorna sucesso ou falha
-            if ($resultado) {
-                // Redireciona com status de sucesso
-                header("Location: ../index.php?pedido=create&status=success");
-            } else {
-                // Redireciona com status de erro
-                header("Location: ../index.php?pedido=create&status=error");
-            }
-        } catch (\Throwable $th) {
-            // Redireciona com status de erro em caso de exceção
-            header("Location: ../index.php?pedido=create?status=error&message=" . urlencode($e->getMessage()));
-        }
-        
-
-        header("Location: ../index.php"); // Redireciona após a criação
+        $this->pedidoDAO->criar($pedido); // Verifique se o método retorna sucesso ou falha
+        header("Location: /index.php"); // Redireciona após a criação
     }
 
     // Exibir pedido para edição
     public function editarPedido($id) {
         $pedido = $this->pedidoDAO->buscarPorId($id);
-        include 'views/update.php';
+        include 'src/views/update.php';
     }
 
     // Atualizar pedido
@@ -49,14 +35,14 @@ class PedidoController {
             $resultado = $this->pedidoDAO->atualizar($pedido); // Verifique se o método retorna sucesso ou falha            
             if ($resultado) {
                 // Redireciona com status de sucesso
-                header("Location: ../index.php?pedido=edit&status=success");
+                header("Location: /index.php?pedido=edit&status=success");
             } else {
                 // Redireciona com status de erro
-                header("Location: ../index.php?pedido=edit&status=error");
+                header("Location: /index.php?pedido=edit&status=error");
             }
         } catch (\Throwable $e) {
             // Redireciona com status de erro em caso de exceção
-            header("Location: ../index.php?pedido=edit?status=error&message=" . urlencode($e->getMessage()));
+            header("Location: /index.php?pedido=edit?status=error&message=" . urlencode($e->getMessage()));
         }
         exit();        
     }
@@ -67,14 +53,14 @@ class PedidoController {
             $resultado = $this->pedidoDAO->deletar($id); // Verifique se o método retorna sucesso ou falha
             if ($resultado) {
                 // Redireciona com status de sucesso
-                header("Location: ../index.php?pedido=delete&status=success");
+                header("Location: /index.php?pedido=delete&status=success");
             } else {
                 // Redireciona com status de erro
-                header("Location: ../index.php?pedido=delete&status=error");
+                header("Location: /index.php?pedido=delete&status=error");
             }
         } catch (Exception $e) {
             // Redireciona com status de erro em caso de exceção
-            header("Location: ../index.php?pedido=delete&status=error&message=" . urlencode($e->getMessage()));
+            header("Location: /index.php?pedido=delete&status=error&message=" . urlencode($e->getMessage()));
         }
         exit(); 
     }

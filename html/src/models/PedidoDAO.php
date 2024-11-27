@@ -1,5 +1,5 @@
 <?php
-include_once 'config/db.php';
+include_once 'src/config/db.php';
 
 class PedidoDAO {
     private $conn;
@@ -11,14 +11,14 @@ class PedidoDAO {
 
     // Criar pedido
     public function criar(Pedido $pedido) {
-        $sql = "INSERT INTO pedidos (descricao, quantidade, preco, vendedor) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO pedidos (descricao, quantidade, preco, vendedor, data) VALUES (?, ?, ?, ?, NOW())";
         $stmt = $this->conn->prepare(mb_convert_encoding($sql, "UTF-8"));
-        return $stmt->execute([$pedido->getDescricao(), $pedido->getQuantidade(), $pedido->getPreco(), $pedido->getVendedor()]);
+        $stmt->execute([$pedido->getDescricao(), $pedido->getQuantidade(), $pedido->getPreco(), $pedido->getVendedor()]);
     }
 
     // Listar pedidos
     public function listar() {
-        $sql = "SELECT * FROM pedidos";
+        $sql = "SELECT * FROM pedidos ORDER BY id DESC";
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

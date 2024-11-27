@@ -1,5 +1,5 @@
 <?php
-include_once 'controllers/PedidoController.php';
+include_once 'src/controllers/PedidoController.php';
 
 $controller = new PedidoController();
 

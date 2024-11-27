@@ -1,6 +1,23 @@
 version: "3.8"
 
 services:
+  # Serviço Apache com PHP
+  apache:
+    image: php:8.2-apache
+    container_name: apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./html:/var/www/html # Diretório de código-fonte PHP
+    depends_on:
+      - mysql
+    networks:
+      - lamp_network
+    ports:
+      - "80:80" # Porta HTTP padrão
+    restart: always
+
   # Serviço MySQL
   mysql:
     image: mysql:5.7
@@ -17,32 +34,16 @@ services:
     ports:
       - "3306:3306" # Porta do MySQL
 
-  # Serviço Apache com PHP
-  apache:
-    image: php:8.2-apache
-    container_name: apache
-    volumes:
-      - ./html:/var/www/html # Diretório de código-fonte PHP
+  # Serviço Adminer
+  adminer:
+    image: adminer:latest
+    container_name: adminer
     depends_on:
-      - mysql
+      - mysql # Adminer depende do MySQL
     networks:
       - lamp_network
     ports:
-      - "80:80" # Porta HTTP padrão
-    restart: always
-
-  # Serviço PHPMyAdmin
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
-    environment:
-      PMA_HOST: mysql # Nome do serviço MySQL
-      PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: root # Senha do usuário root do MySQL
-    ports:
-      - "8080:80" # Porta para acessar o PHPMyAdmin via navegador
-    networks:
-      - lamp_network
+      - "8080:8080" # Porta para acessar o Adminer via navegador
     restart: always
 
 volumes:
