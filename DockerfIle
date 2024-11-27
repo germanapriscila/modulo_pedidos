@@ -1,0 +1,14 @@
+# Use a imagem PHP base
+FROM php:8.2-apache
+
+# Copie os arquivos do projeto para o container
+COPY . /var/www/html/
+
+# Instalar as extensões PHP necessárias (pdo e pdo_mysql)
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Expor a porta 80 para acessar o serviço HTTP
+EXPOSE 80
+
+# Iniciar o Apache no container
+CMD ["apache2-foreground"]

@@ -6,10 +6,10 @@ services:
     image: mysql:5.7
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root # Senha do usuário root do MySQL
+      MYSQL_ROOT_PASSWORD: adminroot # Senha do usuário root do MySQL
       MYSQL_DATABASE: pit2db # Nome do banco de dados a ser criado
-      MYSQL_USER: root # Nome do usuário do banco de dados
-      MYSQL_PASSWORD: root # Senha do usuário
+      MYSQL_USER: admin # Nome do usuário do banco de dados
+      MYSQL_PASSWORD: admin # Senha do usuário
     volumes:
       - mysql_data:/var/lib/mysql # Persistência de dados do MySQL
     networks:
@@ -19,7 +19,7 @@ services:
 
   # Serviço Apache com PHP
   apache:
-    image: php:7.4-apache
+    image: php:8.2-apache
     container_name: apache
     volumes:
       - ./html:/var/www/html # Diretório de código-fonte PHP
