@@ -11,14 +11,20 @@ class PedidoController {
 
     // Listar pedidos
     public function listarPedidos() {
-        $pedidos = $this->pedidoDAO->listar();
+        $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] - 1 : 0;
+
+        $pedidos = $this->pedidoDAO->listar($paginaAtual);
+        $totalRegistros = count($pedidos);
+
+        $totalPaginas = $this->pedidoDAO->total();
+
         include 'src/views/index.php';
     }
 
     // Criar pedido
     public function criarPedido($descricao, $quantidade, $preco, $vendedor) {
         $pedido = new Pedido($descricao, $quantidade, $preco, $vendedor);
-        $this->pedidoDAO->criar($pedido); // Verifique se o método retorna sucesso ou falha
+        $this->pedidoDAO->criar($pedido); // Verifica se o método retorna sucesso ou falha
         header("Location: /index.php"); // Redireciona após a criação
     }
 
@@ -32,7 +38,7 @@ class PedidoController {
     public function atualizarPedido($id, $descricao, $quantidade, $preco, $vendedor) {        
         $pedido = new Pedido($descricao, $quantidade, $preco, $vendedor, $id);        
         try {            
-            $resultado = $this->pedidoDAO->atualizar($pedido); // Verifique se o método retorna sucesso ou falha            
+            $resultado = $this->pedidoDAO->atualizar($pedido); // Verifica se o método retorna sucesso ou falha            
             if ($resultado) {
                 // Redireciona com status de sucesso
                 header("Location: /index.php?pedido=edit&status=success");
@@ -64,5 +70,16 @@ class PedidoController {
         }
         exit(); 
     }
+
+    // Paginação                
+//     public function paginarLista() {
+//         global $totalRegistros, $totalPaginas;
+//         $pedidos = $this->pedidoDAO->buscarPorPagina($indiceInicial, $registrosPorPagina);
+//         $totalRegistros = $this->pedidoDAO->contarTotalRegistros();
+//         $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+
+//         // Inclua a view
+//         include "src/views/index.php";
+//     }
 }
 ?>

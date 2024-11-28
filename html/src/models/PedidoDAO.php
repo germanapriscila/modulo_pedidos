@@ -15,13 +15,21 @@ class PedidoDAO {
         $stmt = $this->conn->prepare(mb_convert_encoding($sql, "UTF-8"));
         $stmt->execute([$pedido->getDescricao(), $pedido->getQuantidade(), $pedido->getPreco(), $pedido->getVendedor()]);
     }
-
+    
     // Listar pedidos
-    public function listar() {
-        $sql = "SELECT * FROM pedidos ORDER BY id DESC";
+    public function listar($paginaAtual) {
+        $sql = "SELECT * FROM pedidos ORDER BY id DESC LIMIT 6 OFFSET " . $paginaAtual * 6;
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    }   
+
+    // Recuperar total de pedidos pedidos
+    public function total() {
+        $sql = "SELECT COUNT(*) AS total FROM pedidos";
+        $stmt = $this->conn->query($sql);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return (int) ceil($result['total'] / 6);
+    }   
 
     // // Buscar pedido por id
     public function buscarPorId($id) {
@@ -48,6 +56,31 @@ class PedidoDAO {
         $stmt = $this->conn->prepare($sql);  
         return $stmt->execute([$id]);
     }
+
+    // Paginação
+    // public function contarTotal() {
+    //     $sqlTotal = "SELECT COUNT(*) as total FROM pedidos";
+    //     $totalRegistros = $this->conn->query($sqlTotal)->fetch()['total'];
+    //     $totalPaginas = ceil($totalRegistros / 6);
+    //     return $totalPaginas;
+    // }
+
+    // public function contarTotalRegistros() {
+    //     $sql = "SELECT COUNT(*) as total FROM pedidos";
+    //     $stmt = $this->conn->query($sql);
+    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    //     return (int) $result['total'];
+    // }
+
+    // public function buscarPorPagina($indiceInicial, $registrosPorPagina) {
+    //     $sql = "SELECT * FROM pedidos LIMIT ? OFFSET ?";
+    //     $stmt = $this->conn->prepare($sql);
+    //     $stmt->execute([$registrosPorPagina, $indiceInicial]);
+    //     $pedidosPorPagina = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // }
+    
+    
 
 }
 ?>
