@@ -1,10 +1,10 @@
 <?php
 
 class Database {
-    private $host = 'mysql';
+    private $host = 'localhost';
     private $db_name = 'pit2db';
-    private $username = 'admin';
-    private $password = 'admin';
+    private $username = 'root';
+    private $password = "1/1+'X@z1S>z" ;
     public $conn;
 
     public function getConnection() {
