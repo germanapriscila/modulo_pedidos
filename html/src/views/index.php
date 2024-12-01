@@ -13,7 +13,7 @@
                 <th>Quantidade</th>
                 <th>Preço</th>
                 <th>Vendedor</th>
-                <th>Data do pedido</th>
+                <th>Data/hora do pedido</th>
             </tr>
         </thead>
         <tbody>

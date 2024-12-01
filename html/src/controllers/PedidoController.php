@@ -24,8 +24,14 @@ class PedidoController {
     // Criar pedido
     public function criarPedido($descricao, $quantidade, $preco, $vendedor) {
         $pedido = new Pedido($descricao, $quantidade, $preco, $vendedor);
-        $this->pedidoDAO->criar($pedido); // Verifica se o método retorna sucesso ou falha
-        header("Location: /index.php"); // Redireciona após a criação
+        try {
+            $this->pedidoDAO->criar($pedido);
+            // Redireciona com status de sucesso
+            header("Location: /index.php?pedido=create&status=success");
+        } catch (Exception $e) {
+            header("Location: /index.php?pedido=create&status=error&message=" . urlencode($e->getMessage()));
+        }
+        exit();
     }
 
     // Exibir pedido para edição
@@ -38,7 +44,7 @@ class PedidoController {
     public function atualizarPedido($id, $descricao, $quantidade, $preco, $vendedor) {        
         $pedido = new Pedido($descricao, $quantidade, $preco, $vendedor, $id);        
         try {            
-            $resultado = $this->pedidoDAO->atualizar($pedido); // Verifica se o método retorna sucesso ou falha            
+            $resultado = $this->pedidoDAO->atualizar($pedido);
             if ($resultado) {
                 // Redireciona com status de sucesso
                 header("Location: /index.php?pedido=edit&status=success");
@@ -46,7 +52,7 @@ class PedidoController {
                 // Redireciona com status de erro
                 header("Location: /index.php?pedido=edit&status=error");
             }
-        } catch (\Throwable $e) {
+        } catch (Exception $e) {
             // Redireciona com status de erro em caso de exceção
             header("Location: /index.php?pedido=edit?status=error&message=" . urlencode($e->getMessage()));
         }
@@ -70,16 +76,5 @@ class PedidoController {
         }
         exit(); 
     }
-
-    // Paginação                
-//     public function paginarLista() {
-//         global $totalRegistros, $totalPaginas;
-//         $pedidos = $this->pedidoDAO->buscarPorPagina($indiceInicial, $registrosPorPagina);
-//         $totalRegistros = $this->pedidoDAO->contarTotalRegistros();
-//         $totalPaginas = ceil($totalRegistros / $registrosPorPagina);
-
-//         // Inclua a view
-//         include "src/views/index.php";
-//     }
 }
 ?>

@@ -2,9 +2,9 @@
 
 class Database {
     private $host = 'localhost';
-    private $db_name = 'pit2db';
+      private $db_name = 'pit2db';
     private $username = 'root';
-    private $password = "1/1+'X@z1S>z" ;
+    private $password = "1/1+'X@z1S>z";
     public $conn;
 
     public function getConnection() {

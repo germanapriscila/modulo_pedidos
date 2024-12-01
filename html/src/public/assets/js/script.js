@@ -33,6 +33,12 @@ if (urlParams.has('pedido') && urlParams.has('status')) {
 
     switch (action) {
 
+        case 'create-success':
+            showMessage('Pedido criado com sucesso', 'success', 'green lighten-4');
+            break;
+        case 'create-error':
+            showMessage('Erro ao criar o pedido.', 'error', 'pink lighten-4');
+            break;
         case 'edit-success':
             showMessage('Pedido atualizado com sucesso!', 'success', 'green lighten-4');
             break;

@@ -20,7 +20,7 @@ require_once "template/header.php";
             </div>
             <div class="row">
                 <div class="input-field col s12 m8 l6">
-                    <input type="text" name="preco" class="validate" placeholder="Digite preço" required>
+                    <input type="number" name="preco" class="validate" placeholder="Digite preço" required>
                     <label class="active" for="preco">Preço</label>
                 </div>
             </div>

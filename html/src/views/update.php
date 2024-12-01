@@ -21,7 +21,7 @@ require_once "template/header.php";
             </div>
             <div class="row">
                 <div class="input-field col s12 m8 l6">
-                    <input type="text" name="preco" value="<?= $pedido->getPreco(); ?>" required>
+                    <input type="number" name="preco" value="<?= $pedido->getPreco(); ?>" required>
                     <label class="active" for="preco">Preço</label>
                 </div>
             </div>
