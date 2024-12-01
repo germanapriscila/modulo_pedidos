@@ -1,5 +1,5 @@
 <?php
-    require_once "template/header.php";
+require_once "template/header.php";
 ?>
 
 <div class="row">
@@ -35,7 +35,10 @@
                 <button type="submit" name="atualizar" value="<?= $pedido->getId(); ?>" class="waves-effect waves-light btn-large red lighten-4 brown-text text-darken-3">
                     <i class="material-icons right brown-text text-darken-3">save</i>Atualizar Pedido
                 </button>
-            </div> 
-        </form>        
+                <a href="/" class="waves-effect waves-light btn-large red lighten-4 brown-text text-darken-3">
+                    <i class="material-icons right brown-text text-darken-3">cancel</i>Cancelar
+                </a>
+            </div>
+        </form>
     </div>
 </div>

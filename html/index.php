@@ -15,7 +15,4 @@ if (isset($_GET['deletar'])) {
     }
 } else {
     $controller->listarPedidos();
-    // $controller->paginarLista();  
 }
-?>
-
