@@ -8,25 +8,25 @@ require_once "template/header.php";
         <h3>Editar pedido</h3>
         <form method="POST" action="../index.php" class="col s12">
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m8 l6">
                     <input type="text" name="descricao" value="<?= $pedido->getDescricao(); ?>" required>
                     <label class="active" for="descricao">Descrição</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m8 l6">
                     <input type="number" name="quantidade" value="<?= $pedido->getQuantidade(); ?>" required>
                     <label class="active" for="quantidade">Quantidade</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m8 l6">
                     <input type="text" name="preco" value="<?= $pedido->getPreco(); ?>" required>
                     <label class="active" for="preco">Preço</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">
+                <div class="input-field col s12 m8 l6">
                     <input type="text" name="vendedor" value="<?= $pedido->getVendedor(); ?>" required>
                     <label class="active" for="vendedor">Vendedor</label>
                 </div>
