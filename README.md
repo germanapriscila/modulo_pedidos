@@ -23,8 +23,15 @@ Clone o projeto e utilize os comandos abaixo para construir e inicializar os con
 ### Construir e inicializar:
 ```bash
 docker-compose up --build -d
+```
+### Apenas inicializar:
+```bash
+docker-compose up --build -d
+```
 
-Execute o comando abaixo no SGBD para criar a tabela pedidos:
+#### Execute o comando abaixo no SGBD para criar a tabela pedidos:
+```markdown
+```sql
 CREATE TABLE `pedidos` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `descricao` VARCHAR(255) NOT NULL,
@@ -34,9 +41,9 @@ CREATE TABLE `pedidos` (
   `vendedor` VARCHAR(100) NOT NULL,
   `data` DATETIME NOT NULL ON UPDATE CURRENT_TIMESTAMP
 );
+```
 
 ## Estrutura de pastas e arquivos:
-
 modulo_pedidos
 ├── html
 │ ├── src
