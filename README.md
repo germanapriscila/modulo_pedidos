@@ -44,7 +44,7 @@ CREATE TABLE `pedidos` (
 ```
 
 ## Estrutura de pastas e arquivos:
-modulo_pedidos\ ├── html\ │ ├── src\ │ │ ├── config\ │ │ │ └── db.php\ │ │ ├── controllers\ │ │ │ └── PedidoController.php\ │ │ ├── models\ │ │ │ ├── Pedido.php\ │ │ │ └── PedidoDAO.php\ │ │ ├── public\ │ │ │ ├── assets\ │ │ │ │ ├── css\ │ │ │ │ │ └── styles.css\ │ │ │ │ ├── js\ │ │ │ │ │ └── script.js\ │ │ ├── views\ │ │ │ ├── templates\ │ │ │ │ ├── header.php\ │ │ │ │ └── footer.php\ │ │ │ ├── create.php\ │ │ │ ├── index.php\ │ │ │ └── update.php\ │ └── index.php\ ├── docker-compose.yml\ ├── Dockerfile\
+modulo_pedidos<br> ├── html<br> │ ├── src<br> │ │ ├── config<br> │ │ │ └── db.php<br> │ │ ├── controllers<br> │ │ │ └── PedidoController.php<br> │ │ ├── models<br> │ │ │ ├── Pedido.php<br> │ │ │ └── PedidoDAO.php<br> │ │ ├── public<br> │ │ │ ├── assets<br> │ │ │ │ ├── css<br> │ │ │ │ │ └── styles.css<br> │ │ │ │ ├── js<br> │ │ │ │ │ └── script.js<br> │ │ ├── views<br> │ │ │ ├── templates<br> │ │ │ │ ├── header.php<br> │ │ │ │ └── footer.php<br> │ │ │ ├── create.php<br> │ │ │ ├── index.php<br> │ │ │ └── update.php<br> │ └── index.php<br> ├── docker-compose.yml<br> ├── Dockerfile<br>
 
 
 
