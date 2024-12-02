@@ -1,13 +1,15 @@
 <?php
 
-class Database {
+class Database
+{
     private $host = 'localhost';
-      private $db_name = 'pit2db';
-    private $username = 'root';
-    private $password = "1/1+'X@z1S>z";
+    private $db_name = 'pit2db';
+   private $username = 'root';
+   private $password = "1/1+'X@z1S>z";
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
 
         try {
@@ -20,5 +22,3 @@ class Database {
         return $this->conn;
     }
 }
-
-?>
