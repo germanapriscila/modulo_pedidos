@@ -26,7 +26,7 @@ docker-compose up --build -d
 ```
 ### Apenas inicializar:
 ```bash
-docker-compose up --build -d
+docker-compose up -d
 ```
 
 #### Execute o comando abaixo no SGBD para criar a tabela pedidos:
